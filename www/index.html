@@ -41,19 +41,19 @@
             });
 
             $('#btnD').click(function(e) {
-                btnCClick(e);
+                btnDClick(e);
             });
 
             $('#btnE').click(function(e) {
-                btnCClick(e);
+                btnEClick(e);
             });
 
             $('#btnF').click(function(e) {
-                btnCClick(e);
+                btnFClick(e);
             });
 
             $('#btnG').click(function(e) {
-                btnCClick(e);
+                btnGClick(e);
             });
 
             init();
@@ -171,8 +171,7 @@
         var active = false;
         var startTime = 0;
         var period = 0;
-        var xx = 0;
-        var yy = 0;
+
 
 
         // ボタンの初期設定
@@ -204,7 +203,6 @@
         function btnAClick(e) {
             active = true;
             startTime = new Date();
-
         }
 
         // ButtonBがクリックされた時の処理
@@ -223,20 +221,31 @@
         }
 
         function btnDClick(e) {
-
+            active = true;
         }
 
         function btnEClick(e) {
-            
+            active = false;
+            period = 180 * parseInt($("#minute").val()) + parseInt($("#second").val());
+            $("#time").html("経過時間: 0");
+            $("#remain").html("残り時間: " + period);
         }
 
         function btnFClick(e) {
-            
+            period = 300 * parseInt($("#minute").val()) + parseInt($("#second").val());
+            $("#time").html("経過時間: 0");
+            $("#remain").html("残り時間: " + period);
         }
 
         function btnGClick(e) {
-            init();
+            time = 0;
+            period = 0;
+            $("#time").html("経過時間: 0");
+            $("#remain").html("残り時間: " + period);
+            active = false;
+            clock(0,0,0,false);
         }
+
 
 
         // 繰り返し実行する処理
@@ -267,11 +276,11 @@
     <button id="btnA">Start</button>
     <button id="btnB">Stop</button>
     <button id="btnC">Set</button>
-    <button id="btnD">setup1(1minute)</button>
-    <button id="btnE">setup2(3minute)</button>
-    <button id="btnF">setup3(5minute)</button>
+    <button id="btnD">reStart</button>
+    <button id="btnE">setup1(3minute)</button>
+    <button id="btnF">setup2(5minute)</button>
     <button id="btnG">reset</button>
-    <input type="number" id="minute" value=0>
+    <input type="number" id="minute" value=1>
     <input type="number" id="second" value=0>
 </body>
 
